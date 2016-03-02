@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import os
+
 from feedgen.feed import FeedGenerator
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
@@ -60,4 +62,6 @@ def my_item(item, base):
     return a
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    debug_mode = 'True' == os.environ.get('DEBUG',True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=debug_mode, host='0.0.0.0', port=port)
