@@ -14,8 +14,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    base = 'http://goo.gl/MY0zSu'
-    r = requests.get(base)
+    base = 'http://www.interpressnews.ge/ge/'
+    headers = {'User-Agent': 'Mozilla/5.0 (Linux; Android 6.0; JHR Build/98234) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.95 Mobile Safari/537.36'}
+    r = requests.get(base, headers=headers)
     r.encoding = 'utf-8'
     soup = BeautifulSoup(r.text, 'lxml')
 
@@ -62,6 +63,7 @@ def my_item(item, base):
     return a
 
 if __name__ == "__main__":
-    debug_mode = 'True' == os.environ.get('DEBUG',True)
+    debug_mode = 'True' == os.environ.get('DEBUG','True')
+    print(debug_mode)
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=debug_mode, host='0.0.0.0', port=port)
