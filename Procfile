@@ -1,1 +1,1 @@
-web: gunicorn wanrss:app wanrss/wanrss
+web: gunicorn wanrss:app --chdir wanrss/
