@@ -24,6 +24,7 @@ setup(name='wan-rss',
           'beautifulsoup4',
           'lxml',
           'feedgen',
+          'gunicorn',
       ],
       entry_points="""
       # -*- Entry points: -*-
